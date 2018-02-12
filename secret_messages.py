@@ -13,7 +13,7 @@ def clear_screen():
 # Welcome Message
 def screen(action):
 	if action == "welcome":
-		clear_screen();
+		clear_screen()
 		print("Hi there! Want to send encrypted messages?\nType quit to exit the program at any time\n\nWe currently have the following ciphers:")	
 
 # Main program
@@ -38,6 +38,7 @@ def program():
 		# Checks if the user input was quit
 		if user_input == "quit":
 			running = False
+			clear_screen()
 		
 		# Checks if the choice is a valid cipher
 		if user_input in ciphers:
@@ -56,6 +57,7 @@ def program():
 				elif cipher_option == "quit":
 					# Loop Ends
 					running = False
+					clear_screen()
 				# Cipher is in options
 				else:
 					# Checks if user input is a valid option
@@ -91,10 +93,12 @@ def program():
 									if user_input2 == "quit":
 										running = False
 										cipher_running = False
+										clear_screen()
 									# Check if option is No
 									elif user_input2 == "no":
 										running = False
 										cipher_running = False
+										clear_screen()
 									# Check if option is yes
 									elif user_input2 == "yes":
 										# Clears screen and show menu again
@@ -126,10 +130,12 @@ def program():
 							if user_input2 == "quit":
 								running = False
 								cipher_running = False
+								clear_screen()
 							# Check if option is No
 							elif user_input2 == "no":
 								running = False
 								cipher_running = False
+								clear_screen()
 							# Check if option is yes
 							elif user_input2 == "yes":
 								# Clears screen and show menu again
@@ -157,10 +163,12 @@ def program():
 							if user_input2 == "quit":
 								running = False
 								cipher_running = False
+								clear_screen()
 							# Check if option is No
 							elif user_input2 == "no":
 								running = False
 								cipher_running = False
+								clear_screen()
 							# Check if option is yes
 							elif user_input2 == "yes":
 								# Clears screen and show menu again
@@ -172,7 +180,7 @@ def program():
 						else:
 
 							# Creates a Transposition instance
-							ciphy = polybius.Transposition()
+							ciphy = polybius.Polybius()
 							# Checks for encryption/decryption
 							if cipher_option == "encrypt":
 								# Encrypt message
@@ -188,10 +196,12 @@ def program():
 							if user_input2 == "quit":
 								running = False
 								cipher_running = False
+								clear_screen()
 							# Check if option is No
 							elif user_input2 == "no":
 								running = False
 								cipher_running = False
+								clear_screen()
 							# Check if option is yes
 							elif user_input2 == "yes":
 								# Clears screen and show menu again
