@@ -1,9 +1,8 @@
 import os
 import sys
 import ciphers
-import polybius
 import affine
-import bifid
+import atbash
 import transposition
 
 # Clear Screen
@@ -23,7 +22,7 @@ def program():
 	screen('welcome')
 
 	# Cipher list
-	ciphers = ["affine", "bifid", "polybius", "transposition"]
+	ciphers = ["affine", "atbash", "transposition"]
 
 	# Tells the program to stop or continue
 	running = True
@@ -71,54 +70,10 @@ def program():
 							# Affine Instance
 							ciphy = affine.Affine()
 							# Number 1 for key
-							number1 = int(raw_input("Please choose a number from 1 to 9: ").lower())
-							# Checks if valid number from 1 to 9
-							if number1 > 1 and number1 < 9:
-								# Asks another number
-								number2 = int(raw_input("One more left to go. Please choose another number from 1 to 9: ").lower())
-								# Validate numbers
-								if number2 > 1 and number2 < 9:
-									# Checks for encryption/decryption
-									if cipher_option == "encrypt":
-										# Encrypt message
-										encrypted_message = ciphy.encrypt([number1, number2], secret_message)										
-									else:
-										# Decrypt message
-										encrypted_message = ciphy.encrypt([number1, number2], secret_message)
-									# Prints out the secret message
-									print("\nAnd here's your secret message, straight from the oven: \n{}\n".format(encrypted_message))
-									# Asks user if he/she wants to continue or quit
-									user_input2 = raw_input("Do you want to encrypt or decrypt something else? Type yes or no: ").lower()
-									# Check if option is quit
-									if user_input2 == "quit":
-										running = False
-										cipher_running = False
-										clear_screen()
-									# Check if option is No
-									elif user_input2 == "no":
-										running = False
-										cipher_running = False
-										clear_screen()
-									# Check if option is yes
-									elif user_input2 == "yes":
-										# Clears screen and show menu again
-										clear_screen()
-										screen("welcome")
-										cipher_running = 0
-									else:
-										print("\nError. Don't worry, just type a valid option: yes or no.\n")
-								else:
-									print("\nError. Don't worry, just type a valid number from 1 to 9.\n")
-							else:
-								print("\nError. Don't worry, just type a valid number from 1 to 9.\n")
-						elif user_input == "bifid":
-
-							# Creates a Bifid instance
-							ciphy = bifid.Bifid()
 							# Checks for encryption/decryption
 							if cipher_option == "encrypt":
 								# Encrypt message
-								encrypted_message = ciphy.encrypt(secret_message)
+								encrypted_message = ciphy.encrypt(secret_message)										
 							else:
 								# Decrypt message
 								encrypted_message = ciphy.decrypt(secret_message)
@@ -144,10 +99,11 @@ def program():
 								cipher_running = 0
 							else:
 								print("\nError. Don't worry, just type a valid option: yes or no.\n")
-						elif user_input == "polybius":
+								
+						elif user_input == "atbash":
 
-							# creates a polybius instance
-							ciphy = polybius.Polybius()
+							# Creates a Bifid instance
+							ciphy = atbash.Atbash()
 							# Checks for encryption/decryption
 							if cipher_option == "encrypt":
 								# Encrypt message
@@ -180,7 +136,7 @@ def program():
 						else:
 
 							# Creates a Transposition instance
-							ciphy = polybius.Polybius()
+							ciphy = transposition.Transposition()
 							# Checks for encryption/decryption
 							if cipher_option == "encrypt":
 								# Encrypt message
