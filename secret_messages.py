@@ -1,7 +1,7 @@
 import os
 import sys
 import ciphers
-import affine
+import polybius
 import atbash
 import transposition
 
@@ -13,7 +13,7 @@ def clear_screen():
 def screen(action):
 	if action == "welcome":
 		clear_screen()
-		print("Hi there! Want to send encrypted messages?\nType quit to exit the program at any time\n\nWe currently have the following ciphers:")	
+		print("Hi there! Want to send encrypted messages?\nType quit to exit the program at any time\n\nWe currently have the following ciphers:")
 
 # Main program
 def program():
@@ -22,7 +22,7 @@ def program():
 	screen('welcome')
 
 	# Cipher list
-	ciphers = ["affine", "atbash", "transposition"]
+	ciphers = ["atbash", "polybius", "transposition"]
 
 	# Tells the program to stop or continue
 	running = True
@@ -30,7 +30,7 @@ def program():
 	while running:
 		# Showing my ciphers.
 		for cipher in ciphers:
-			print("-{}".format(cipher.capitalize()))	
+			print("-{}".format(cipher.capitalize()))
 		# Asking the user for a cipher option
 		user_input = raw_input("\nPlease choose one of the cipher options! Just type in the cipher name: ").lower()
 
@@ -38,7 +38,7 @@ def program():
 		if user_input == "quit":
 			running = False
 			clear_screen()
-		
+
 		# Checks if the choice is a valid cipher
 		if user_input in ciphers:
 			# Tells Cipher Loop to stop or continue
@@ -61,19 +61,19 @@ def program():
 				else:
 					# Checks if user input is a valid option
 					if cipher_option in cipher_options:
-						
+
 						# Asks the user for the secret message
 						secret_message = raw_input("Almost there... What's the secret message you want to {}?: ".format(cipher_option)).lower()
 
 						# Checks for cipher type
-						if user_input == "affine":
+						if user_input == "polybius":
 							# Affine Instance
-							ciphy = affine.Affine()
+							ciphy = polybius.Polybius()
 							# Number 1 for key
 							# Checks for encryption/decryption
 							if cipher_option == "encrypt":
 								# Encrypt message
-								encrypted_message = ciphy.encrypt(secret_message)										
+								encrypted_message = ciphy.encrypt(secret_message)
 							else:
 								# Decrypt message
 								encrypted_message = ciphy.decrypt(secret_message)
@@ -99,7 +99,7 @@ def program():
 								cipher_running = 0
 							else:
 								print("\nError. Don't worry, just type a valid option: yes or no.\n")
-								
+
 						elif user_input == "atbash":
 
 							# Creates a Bifid instance
@@ -172,13 +172,10 @@ def program():
 
 		else:
 			# Tells the user to input a correct choice.
-			print("\nError. Don't worry, just type a valid option.\n")				
+			print("\nError. Don't worry, just type a valid option.\n")
 
 # Main Code
 if __name__ == "__main__":
-		
+
 	# Runs the program
 	program()
-
-
-
